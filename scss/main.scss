@@ -1,0 +1,144 @@
+@import "mixins";
+@import "menu";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  color: #fff;
+  height: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  line-height: 2;
+}
+//headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 350;
+  // & attaches to the header in html instead of referring to it
+  &.lg-heading {
+    font-size: 5rem; //rem is html size multiplier
+  }
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+header {
+  z-index: 2;
+  position: fixed; //if page is scrolled hamburger will stay at corner
+  width: 100%;
+}
+.secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 3rem;
+  min-height: calc(100vh-60px);
+
+  .icons {
+    margin-top: 1rem;
+    a {
+      padding: 0.5 rem;
+
+      &:hover {
+        color: $secondary-color;
+        @include easing();
+      }
+    }
+  }
+
+  &#origin {
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio"
+    "job1 job2";
+  grid-template-columns: repeat (2, 1fr);
+}
+
+.bio-image {
+  grid-area: bioimage;
+  margin: auto;
+  border-radius: 50%;
+  border: $secondary-color 3px solid;
+}
+
+.bio {
+  grid-area: bio;
+  font-size: 1.5rem;
+}
+
+.job-1 {
+  grid-area: job1;
+}
+.job-2 {
+  grid-area: job2;
+}
+
+.job {
+  background: lighten($primary-color, 5);
+  padding: 0.5rem;
+  border-bottom: $secondary-color 5px solid;
+}
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5 rem 2.5 rem;
+    margin-bottom: 3rem;
+    @include easing;
+
+    &:hover {
+      padding: 0.5rem 1rem;
+      background: $secondary-color;
+      color: $primary-color;
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}
+.btn-dark {
+  color: $secondary-color;
+}
+
+.project {
+  video {
+    width: 100%;
+  }
+}
+
+#footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: $secondary-color;
+  height: 60px;
+}
+
+@import "mobile";
